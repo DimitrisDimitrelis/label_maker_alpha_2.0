@@ -34,30 +34,31 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     function checkInputData(dataJson, inputData, PROMPTS) {
+        let errFlag = true;
         ///Check if input is blank
         if (inputData.code === '' || inputData.count === '' || inputData.qty === '') {
             PROMPTS.errAll.style.display = 'block';
-            return;
+            return errFlag;
         }
         ///Count check
         if (inputData.count > 24 || isNaN(inputData.count)) {
             PROMPTS.errCount.style.display = 'block';
-            return;
+            return errFlag;
         }
         ///Qty checks
         if (isNaN(inputData.qty) || !(inputData.qty)) {
             PROMPTS.errQty.style.display = 'block';
-            return;
+            return errFlag;
         }
         ///Code checks
         const regex = /[A-Za-z]/;
         if (regex.test(inputData.code) === true) {
             PROMPTS.errLatin.style.display = 'block';
-            return;
+            return errFlag;
         }
         if (inputData.code.toUpperCase() !== inputData.code) {
             PROMPTS.errUpperCase.style.display = 'block';
-            return;
+            return errFlag;
         }
         let flag = false;
         let i = 0;
@@ -70,7 +71,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         } while (flag === false && i < dataJson.length);
         if (flag === false) {
             PROMPTS.errCode.style.display = 'block';
-            return;
+            return errFlag;
         }
     }
 
@@ -170,6 +171,12 @@ window.addEventListener('DOMContentLoaded', async () => {
                 img.style.display = 'none';
             }
 
+            let qr = document.createElement('img');
+            label.appendChild(qr);
+            qr.id = `qr-${i}`;
+            qr.classList.add('qr');
+            qr.src = './img/qr-placeholder.jpg';
+
             //Generate Barcode
             let codeLatin = convertGreekToLatin(data);
             JsBarcode(document.getElementById(`barcode-${i}`), codeLatin, {
@@ -199,14 +206,18 @@ window.addEventListener('DOMContentLoaded', async () => {
             value.style.display = 'none';
         });
         let inputData = getUserInput();
-        checkInputData(dataJson, inputData, PROMPTS);
-        let data = buildData(dataJson, inputData);
-        generateLabel(data, inputData);
-
-        ///CLEAR INPUT FIELDS///
-        document.getElementById('input-code').value = '';
-        document.getElementById('input-count').value = '';
-        document.getElementById('input-qty').value = '';
+        let errFlag = checkInputData(dataJson, inputData, PROMPTS);
+        if (errFlag) {
+            return;
+        } else {
+            let data = buildData(dataJson, inputData);
+            generateLabel(data, inputData);
+    
+            ///CLEAR INPUT FIELDS///
+            document.getElementById('input-code').value = '';
+            document.getElementById('input-count').value = '';
+            document.getElementById('input-qty').value = '';
+        }
     });
     let buttonPdf = document.getElementById('button-save');
     buttonPdf.addEventListener('click', function () {

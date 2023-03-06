@@ -117,9 +117,17 @@ button {
     max-height: 8mm;
     position: absolute;
     bottom: 13.5mm;
+    left: 17mm;
+    display: block;
+}
+
+.qr {
+    z-index: 1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-height: 14mm;
+    position: absolute;
+    bottom: 13.5mm;
     left: 2mm;
     display: block;
-    /* border: 1px solid black; */
-
-    /* transform: translate(-50%, -50%); */
 }

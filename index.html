@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ταμπέλες Προϊόντων</title>
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+</head>
+<body>
+    <div class="container-input" id="container-input">
+        <div class="inputs">
+            <label for="input-code">Κωδικός:</label>
+            <input type="text" id="input-code" placeholder="Κωδικός...">
+            <label for="input-count">Ταμπέλες:</label>
+            <input type="text" id="input-count" placeholder="Αριθμός ταμπελών...">
+            <label for="input-qty">Τεμάχια:</label>
+            <input type="text" id="input-qty" placeholder="Αριθμός τεμαχίων...">
+        </div>
+        <div class="buttons">
+            <button id="button-create">Δημιουργία</button>
+            <button id="button-reset" onClick="window.location.reload();">Επαναφορά</button>
+            <button id="button-save">Αποθήκευση</button>
+        </div> 
+	</div>
+
+    <!--ERROR elements-->
+    <p class="err" id="err-all">Συμπληρώστε όλα τα πεδία.</p>
+    <p class="err" id="err-code">Εισάγετε έγκυρο κωδικό.</p>
+    <p class="err" id="err-count">Εισάγετε έγκυρο αριθμό ταμπελών προς εκτύπωση (μέγιστος αριθμός 24 ταμπέλες).</p>
+    <p class="err" id="err-upper-case">Ο κωδικός θα πρέπει να έχει μόνο κεφαλαίους χαρακτήρες.</p>
+    <p class="err" id="err-latin">Ο κωδικός θα πρέπει να περιέχει μόνο ελληνικούς χαρακτήρες.</p>
+    <p class="err" id="err-qty">Εισάγετε μόνο αριθμό στο πεδίο "Τεμάχια".</p>
+
+    <!--MESSAGE elements-->
+    <p class="msg" id="msg-check-code">Γίνεται έλεγχος του κωδικού. Περιμένετε...</p>
+    <p class="msg" id="msg-code-ok">Ο κωδικός είναι έγκυρος.</p>
+
+    	<!--LABELS-->
+	<div class="label-container" id="label-container">
+        <div class="label" id="label-0">
+            <svg class="barcode" id="barcode-0"></svg>
+        </div>
+        <div class="label" id="label-1">
+            <svg class="barcode" id="barcode-1"></svg>
+        </div>
+        <div class="label" id="label-2">
+            <svg class="barcode" id="barcode-2"></svg>
+        </div>
+        <div class="label" id="label-3">
+            <svg class="barcode" id="barcode-3"></svg>
+        </div>
+        <div class="label" id="label-4">
+            <svg class="barcode" id="barcode-4"></svg>
+        </div>
+        <div class="label" id="label-5">
+            <svg class="barcode" id="barcode-5"></svg>
+        </div>
+        <div class="label" id="label-6">
+            <svg class="barcode" id="barcode-6"></svg>
+        </div>
+        <div class="label" id="label-7">
+            <svg class="barcode" id="barcode-7"></svg>
+        </div>
+        <div class="label" id="label-8">
+            <svg class="barcode" id="barcode-8"></svg>
+        </div>
+        <div class="label" id="label-9">
+            <svg class="barcode" id="barcode-9"></svg>
+        </div>
+        <div class="label" id="label-10">
+            <svg class="barcode" id="barcode-10"></svg>
+        </div>
+        <div class="label" id="label-11">
+            <svg class="barcode" id="barcode-11"></svg>
+        </div>
+        <div class="label" id="label-12">
+            <svg class="barcode" id="barcode-12"></svg>
+        </div>
+        <div class="label" id="label-13">
+            <svg class="barcode" id="barcode-13"></svg>
+        </div>
+        <div class="label" id="label-14">
+            <svg class="barcode" id="barcode-14"></svg>
+        </div>
+        <div class="label" id="label-15">
+            <svg class="barcode" id="barcode-15"></svg>
+        </div>
+        <div class="label" id="label-16">
+            <svg class="barcode" id="barcode-16"></svg>
+        </div>
+        <div class="label" id="label-17">
+            <svg class="barcode" id="barcode-17"></svg>
+        </div>
+        <div class="label" id="label-18">
+            <svg class="barcode" id="barcode-18"></svg>
+        </div>
+        <div class="label" id="label-19">
+            <svg class="barcode" id="barcode-19"></svg>
+        </div>
+        <div class="label" id="label-20">
+            <svg class="barcode" id="barcode-20"></svg>
+        </div>
+        <div class="label" id="label-21">
+            <svg class="barcode" id="barcode-21"></svg>
+        </div>
+        <div class="label" id="label-22">
+            <svg class="barcode" id="barcode-22"></svg>
+        </div>
+        <div class="label" id="label-23">
+            <svg class="barcode" id="barcode-23"></svg>
+        </div>
+    </div>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>

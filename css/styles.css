@@ -1,0 +1,125 @@
+label {
+    font-weight: 600;
+}
+input {
+    width: 7rem;
+    padding-block: .5rem;
+}
+button {
+    font-weight: 600;
+    padding: .5rem 1rem;
+    margin-inline: 1rem;
+}
+.container-input {
+    text-align: center;
+    background-color: antiquewhite;
+    padding-inline: 1rem;
+    padding-block: 2rem;
+}
+.inputs {
+    padding: .5rem;
+}
+.buttons {
+    padding: .5rem;
+}
+.err {
+    color: brown;
+    font-weight: 600;
+    background-color: pink;
+    width: fit-content;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    display: none;
+}
+.msg {
+    color: green;
+    font-weight: 600;
+    background-color: greenyellow;
+    width: fit-content;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    display: none;
+}
+
+/*LABELS*/
+.label-container {
+    width: 210mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 0px;
+}
+
+.label {
+    width: 70mm;
+    height: 36mm;
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+
+.name {
+    position: absolute;
+    top: 2mm;
+    right: 2mm;
+}
+
+.process {
+    position: absolute;
+    top: 7.5mm;
+    right: 2mm; 
+}
+
+.size {
+    position: absolute;
+    top: 12mm;
+    right: 2mm;
+
+    font-weight: 600;
+    font-size: 150%;
+}
+
+.din {
+    position: absolute;
+    top: 19mm;
+    right: 2mm;
+}
+
+.material {
+    position: absolute;
+    top: 24mm;
+    right: 2mm;
+}
+
+.qty {
+    position: absolute;
+    top: 18.5mm;
+    right: 2mm;
+}
+
+.tmx {
+    font-size: .5rem;
+}
+
+.barcode {
+    z-index: 10;
+    position: absolute;
+    bottom: 2mm;
+    left: 2mm;
+}
+
+.img {
+    z-index: -1;
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-height: 8mm;
+    position: absolute;
+    bottom: 13.5mm;
+    left: 2mm;
+    display: block;
+    /* border: 1px solid black; */
+
+    /* transform: translate(-50%, -50%); */
+}

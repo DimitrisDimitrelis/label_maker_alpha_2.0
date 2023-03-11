@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         let i = 0;
         do {
             console.log('inside for...');
-            if (inputData.code === dataJson[i].Subcode) {
+            if (inputData.code === dataJson[i].subcode) {
                 flag = true;
             }
             i++;
@@ -78,37 +78,38 @@ window.addEventListener('DOMContentLoaded', async () => {
     function buildData(dataJson, inputData) {
         let data = {};
         for (let i = 0; i < dataJson.length; i++) {
-            if (inputData.code === dataJson[i].Subcode) {
+            if (inputData.code === dataJson[i].subcode) {
                 data = {
-                    fullname : dataJson[i].Fullname,
-                    name : dataJson[i].Name,
-                    din : dataJson[i].Din,
-                    material : dataJson[i].Material,
-                    size: dataJson[i].Size,
-                    qty : dataJson[i].Qty,
-                    subcode : dataJson[i].Subcode
+                    fullname : dataJson[i].fullname,
+                    name : dataJson[i].name,
+                    din : dataJson[i].din,
+                    material : dataJson[i].material,
+                    size: dataJson[i].size,
+                    qty : dataJson[i].qty,
+                    barcode : dataJson[i].barcode,
+                    subcode : dataJson[i].subcode
                 };
             }
         }
         return data;
     }
 
-    function convertGreekToLatin(data) {
-        const greek_to_latin = {
-            'Α':'A','Β':'B','Γ':'C','Δ':'D','Ε':'E','Ζ':'Z','Η':'H',
-            'Θ':'G','Ι':'I','Κ':'K','Λ':'L','Μ':'M','Ν':'N','Ξ':'J',
-            'Ο':'O','Π':'P','Ρ':'R','Σ':'S','Τ':'T','Υ':'Y','Φ':'F',
-            'Χ':'X','Ψ':'U','Ω':'Q' 
-        }
-        const regex = new RegExp(Object.keys(greek_to_latin).join('|'), 'g');
+    // function convertGreekToLatin(data) {
+    //     const greek_to_latin = {
+    //         'Α':'A','Β':'B','Γ':'C','Δ':'D','Ε':'E','Ζ':'Z','Η':'H',
+    //         'Θ':'G','Ι':'I','Κ':'K','Λ':'L','Μ':'M','Ν':'N','Ξ':'J',
+    //         'Ο':'O','Π':'P','Ρ':'R','Σ':'S','Τ':'T','Υ':'Y','Φ':'F',
+    //         'Χ':'X','Ψ':'U','Ω':'Q' 
+    //     }
+    //     const regex = new RegExp(Object.keys(greek_to_latin).join('|'), 'g');
     
-        const replaceGreek = (str) => {
-            return str.replace(regex, (match) => greek_to_latin[match]);
-        }
+    //     const replaceGreek = (str) => {
+    //         return str.replace(regex, (match) => greek_to_latin[match]);
+    //     }
     
-        let codeLatin = replaceGreek(data.subcode);
-        return codeLatin;
-    }
+    //     let codeLatin = replaceGreek(data.subcode);
+    //     return codeLatin;
+    // }
 
     function generateLabel(data, inputData) {
         let i = 0;
@@ -178,8 +179,8 @@ window.addEventListener('DOMContentLoaded', async () => {
             qr.src = './img/qr-placeholder.jpg';
 
             //Generate Barcode
-            let codeLatin = convertGreekToLatin(data);
-            JsBarcode(document.getElementById(`barcode-${i}`), codeLatin, {
+            // let codeLatin = convertGreekToLatin(data);
+            JsBarcode(document.getElementById(`barcode-${i}`), data.barcode, {
                 format: "CODE128",
                 displayValue: false,
                 fontSize: 20,
